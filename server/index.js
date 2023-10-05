@@ -7,6 +7,7 @@ import cors from "cors"
 const app = express()
 
 app.use(cors())
+app.use(express.json())
 
 const data = [{
     id: 0,
@@ -32,11 +33,15 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
 
+    const {
+        title, description
+    } = req.body
+
     data.push({
-        id: 2,
-        title: "Reservacion 3" ,
-        description: "Quiero una reservacion a Sydney",
+        title, description
     })
+
+    
 
     res.json({
         msg: "reservacion agregada",
