@@ -1,6 +1,12 @@
+// url del post: https://fullstack-proyecto-restaurante.onrender.com/
+//IMPORTACIONES
 import express from "express"
+import cors from "cors"
 
+//INICIALIZADORES
 const app = express()
+
+app.use(cors())
 
 const data = [{
     id: 0,
@@ -13,6 +19,8 @@ const data = [{
     description: "Reservacion a Toluca"
 }]
 
+
+//RUTAS
 app.get("/", (req, res) => {
 
     res.json({
