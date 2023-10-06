@@ -10,14 +10,7 @@ app.use(cors())
 app.use(express.json())
 
 const data = [{
-    id: 0,
-    title: "reservacion 1",
-    description: "Reservacion a cancun"
-},
-{
-    id: 1,
-    title: "reservacion 2",
-    description: "Reservacion a Toluca"
+    
 }]
 
 
