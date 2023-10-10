@@ -1,47 +1,24 @@
 // url del post: https://fullstack-proyecto-restaurante.onrender.com/
 //IMPORTACIONES
-import express from "express"
-import cors from "cors"
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+
+//importaciones de archivos
+import userRoute from "./routes/users.js";
+import reservacionesRoute from "./routes/reservaciones.js";
 
 //INICIALIZADORES
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
+dotenv.config();
 
-const data = [{
-    
-}]
-
+const port = process.env.BASE_URL_PORT || 3005;
 
 //RUTAS
-app.get("/", (req, res) => {
+app.use("/api/v1/users", userRoute);
+app.use("/api/v1/reservaciones", reservacionesRoute);
 
-    res.json({
-        msg: "Hola mundo",
-        data: data
-    })
-
-})
-
-app.post("/", (req, res) => {
-
-    const {
-        title, description
-    } = req.body
-
-    data.push({
-        title, description
-    })
-
-    
-
-    res.json({
-        msg: "reservacion agregada",
-        data: data,
-    })
-
-})
-
-
-app.listen(3005, () => console.log("servidor encendido"))
+app.listen(port, () => console.log("servidor encendido"));
